@@ -1,0 +1,48 @@
+<app-header></app-header>
+<div class="workspace" [class.blurred]="expandedSegment">
+  <div class="left-panel">
+    <ccp-panel></ccp-panel>
+  </div>
+  <div class="right-panel">
+    <div class="tabbed-card card shadow-sm border-0">
+
+      <!-- Tab Navigation -->
+      <div class="tabbed-header card-header">
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'attributes'"
+          (click)="activeTab = 'attributes'">
+          <i class="bi bi-tags-fill"></i>
+          Custom Attributes
+        </button>
+        <button
+          class="tab-btn"
+          [class.active]="activeTab === 'transcript'"
+          (click)="activeTab = 'transcript'">
+          <i class="bi bi-mic-fill"></i>
+          Live Transcript
+        </button>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content-area">
+        @if (activeTab === 'attributes') {
+          <custom-attributes></custom-attributes>
+        }
+        @if (activeTab === 'transcript') {
+          <transcript-panel></transcript-panel>
+        }
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="segment-overlay" *ngIf="expandedSegment">
+  <div class="overlay-content">
+    <button class="close-btn" (click)="expandedSegment = null">&times;</button>
+    @switch (expandedSegment) { @case ('customAttributes') {
+    <custom-attributes />
+    }}
+  </div>
+</div>

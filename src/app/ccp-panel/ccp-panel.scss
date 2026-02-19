@@ -1,0 +1,11 @@
+.ccp-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ccp-container {
+  flex: 1;
+  min-height: 600px;
+  border: 1px solid #ccc;
+}

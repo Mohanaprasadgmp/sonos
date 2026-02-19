@@ -1,0 +1,27 @@
+.attrs-container {
+  height: 100%;
+}
+
+.attrs-thead th {
+  background-color: var(--accent-light);
+  border-bottom: 2px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #374151;
+  padding: 10px 12px;
+}
+
+td, th {
+  font-size: 13px;
+  padding: 10px 12px;
+}
+
+.table-hover tbody tr:hover {
+  background-color: var(--accent-light);
+}
+
+.attrs-waiting {
+  min-height: 200px;
+}

@@ -1,0 +1,16 @@
+/* Global styles */
+:root {
+  --primary: #0D1B2A;
+  --accent: #1E90FF;
+  --accent-light: #EFF6FF;
+  --surface: #FFFFFF;
+  --border: #BFDBFE;
+  --page-bg: #F1F5F9;
+  --text-muted: #6B7280;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--page-bg);
+  margin: 0;
+}
