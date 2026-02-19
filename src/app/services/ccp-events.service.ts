@@ -14,6 +14,7 @@ export class CcpEventsService {
   private callConnectedSubject = new BehaviorSubject<{ channel: string; value: string } | null>(null);
   private passCustomAttributesSubject = new BehaviorSubject<any | null>(null);
   private transcriptsSubject = new BehaviorSubject<TranscriptSegment[]>([]);
+  private agentNameSubject = new BehaviorSubject<string>('');
 
   public incomingChannel: string = '';
 
@@ -21,6 +22,7 @@ export class CcpEventsService {
   callConnected$ = this.callConnectedSubject.asObservable();
   passCustomAttributes$ = this.passCustomAttributesSubject.asObservable();
   transcripts$ = this.transcriptsSubject.asObservable();
+  agentName$ = this.agentNameSubject.asObservable();
 
   notifyCallConnected(channel: string, value: string) {
     this.callConnectedSubject.next({ channel, value });
@@ -40,5 +42,9 @@ export class CcpEventsService {
 
   clearTranscripts() {
     this.transcriptsSubject.next([]);
+  }
+
+  setAgentName(name: string) {
+    this.agentNameSubject.next(name);
   }
 }

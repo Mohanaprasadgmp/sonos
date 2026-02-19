@@ -2,12 +2,17 @@
   <div class="header-left">
     <img src="assets/sonos.jpg" alt="Brand Logo" class="brand-logo" />
   </div>
+
   <div class="header-right">
-    <div class="reports" (click)="$event.stopPropagation()">
-      <button class="reports-btn" (click)="signOut()">
-        <i class="bi bi-box-arrow-right"></i>
-        <span class="reports-label">Logout</span>
-      </button>
-    </div>
+    <!-- @if (agentName) {
+      <div class="agent-profile">
+        <div class="agent-avatar">{{ agentInitials }}</div>
+        <span class="agent-name">{{ agentName }}</span>
+      </div>
+    }
+
+    <button class="logout-btn" (click)="signOut()" title="Logout">
+      <i class="bi bi-box-arrow-right"></i>
+    </button> -->
   </div>
 </header>

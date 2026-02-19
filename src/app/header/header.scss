@@ -25,96 +25,60 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.brand-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-style: italic;
-  letter-spacing: 1px;
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-.header-center {
+/* Agent profile: avatar circle + name */
+.agent-profile {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.agent-status-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 5px 14px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  color: #e2e8f0;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
+.agent-avatar {
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background-color: #22C55E;
-  box-shadow: 0 0 6px #22C55E;
-  flex-shrink: 0;
-}
-
-.header-right {
+  background: var(--accent);
+  color: #fff;
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
-.reports {
-  position: relative;
+.agent-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
 }
 
-.reports-btn {
+/* Icon-only logout button */
+.logout-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   background: transparent;
   color: white;
-  border: 1px solid var(--accent);
-  padding: 7px 14px;
-  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  font-size: 0.88rem;
-  transition: background 0.2s, box-shadow 0.2s;
-}
+  font-size: 1rem;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
 
-.reports-btn:hover {
-  background: rgba(30, 144, 255, 0.15);
-  box-shadow: 0 0 8px rgba(30, 144, 255, 0.4);
-}
-
-.reports-dropdown {
-  position: absolute;
-  right: 0;
-  top: 42px;
-  min-width: 237px;
-  background: white;
-  color: var(--primary);
-  border-radius: 6px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  list-style: none;
-  margin: 6px 0 0 0;
-  padding: 8px 0;
-  z-index: 1000;
-}
-
-.reports-item {
-  padding: 6px 16px;
-}
-
-.reports-item a {
-  color: inherit;
-  text-decoration: none;
-  display: block;
-}
-
-.reports-item a:hover {
-  background: var(--accent-light);
+  &:hover {
+    background: rgba(30, 144, 255, 0.2);
+    border-color: var(--accent);
+    box-shadow: 0 0 8px rgba(30, 144, 255, 0.4);
+  }
 }

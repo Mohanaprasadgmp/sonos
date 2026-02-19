@@ -28,6 +28,11 @@ export class CcpPanel implements AfterViewInit, OnDestroy {
       softphone: { allowFramedSoftphone: true },
     });
 
+    // Resolve the logged-in agent name once the CCP is ready
+    connect.agent((agent: any) => {
+      this.ngZone.run(() => this.ccpEvents.setAgentName(agent.getName() || ''));
+    });
+
     connect.contact((contact: any) => {
       contact.onConnected(async () => {
         try {

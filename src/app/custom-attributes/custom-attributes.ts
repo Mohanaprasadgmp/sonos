@@ -29,7 +29,7 @@ export class CustomAttributes {
         this.attributes = {};
         this.hasData = false;
       }
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
     });
   }
 
