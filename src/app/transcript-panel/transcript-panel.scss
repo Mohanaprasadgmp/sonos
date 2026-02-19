@@ -1,6 +1,19 @@
-.transcript-waiting {
-  min-height: 200px;
+// Host element fills its allocated space and acts as positioning context
+:host {
+  display: block;
   height: 100%;
+  position: relative;
+}
+
+// ── Empty / waiting state ────────────────────────────────────────────────────
+.transcript-waiting {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
 }
 
 .transcript-icon {
@@ -13,6 +26,7 @@
   color: var(--text-muted);
   font-size: 0.88rem;
   font-weight: 500;
+  margin-bottom: 0.25rem;
 }
 
 .transcript-subtitle {
@@ -20,4 +34,62 @@
   font-size: 0.78rem;
   opacity: 0.7;
   margin-bottom: 0;
+}
+
+// ── Live transcript scroll area ──────────────────────────────────────────────
+// Absolutely fills the host so the panel never pushes the page height
+.transcript-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bubble-row {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+
+  &.agent {
+    align-self: flex-end;
+    align-items: flex-end;
+  }
+
+  &.customer {
+    align-self: flex-start;
+    align-items: flex-start;
+  }
+}
+
+.bubble-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.bubble {
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  word-break: break-word;
+
+  .agent & {
+    background-color: var(--accent);
+    color: #fff;
+    border-bottom-right-radius: 3px;
+  }
+
+  .customer & {
+    background-color: var(--accent-light);
+    color: #1e3a5f;
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 3px;
+  }
 }

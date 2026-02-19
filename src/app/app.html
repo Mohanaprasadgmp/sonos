@@ -24,14 +24,14 @@
         </button>
       </div>
 
-      <!-- Tab Content -->
+      <!-- Tab Content — both components stay alive so real-time updates always work -->
       <div class="tab-content-area">
-        @if (activeTab === 'attributes') {
+        <div class="tab-pane-wrap" [hidden]="activeTab !== 'attributes'">
           <custom-attributes></custom-attributes>
-        }
-        @if (activeTab === 'transcript') {
+        </div>
+        <div class="tab-pane-wrap" [hidden]="activeTab !== 'transcript'">
           <transcript-panel></transcript-panel>
-        }
+        </div>
       </div>
 
     </div>

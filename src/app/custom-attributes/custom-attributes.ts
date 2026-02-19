@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CcpEventsService } from '../services/ccp-events.service';
 import { CommonModule } from '@angular/common';
 
@@ -16,7 +16,8 @@ export class CustomAttributes {
   toggleAttributes() {
     this.isExpanded = !this.isExpanded;
   }
-  constructor(public eventService: CcpEventsService) {
+
+  constructor(public eventService: CcpEventsService, private cdr: ChangeDetectorRef) {
     this.eventService.passCustomAttributes$.subscribe((attributes) => {
       if (attributes && Object.keys(attributes).length > 0) {
         console.log('Received custom attributes:', attributes);
@@ -25,18 +26,17 @@ export class CustomAttributes {
         this.hasData = true;
       } else {
         console.log('No attributes received or empty');
-        this.attributes = {}; // or {}
+        this.attributes = {};
         this.hasData = false;
       }
+      this.cdr.detectChanges();
     });
   }
 
   filterBuilderQuotationAndCallSummary(data: any): any {
-    // Create a new object with only the required properties
     console.log('filterBuilderQuotationAndCallSummary ', {
       CustomerLanguage: data.CustomerLanguage,
     });
-
     return {
       CustomerLanguage: data.CustomerLanguage,
     };

@@ -1,5 +1,18 @@
-<div class="d-flex flex-column align-items-center justify-content-center text-center p-4 transcript-waiting">
-  <i class="bi bi-headset mb-3 transcript-icon"></i>
-  <p class="mb-1 transcript-title">Waiting for call to connect...</p>
-  <p class="transcript-subtitle">Real-time transcript will appear here once a call is active.</p>
-</div>
+@if (transcripts.length === 0) {
+  <div class="d-flex flex-column align-items-center justify-content-center text-center p-4 transcript-waiting">
+    <i class="bi bi-headset mb-3 transcript-icon"></i>
+    <p class="mb-1 transcript-title">Waiting for call to connect...</p>
+    <p class="transcript-subtitle">Real-time transcript will appear here once a call is active.</p>
+  </div>
+} @else {
+  <div class="transcript-scroll" #scrollContainer>
+    @for (segment of transcripts; track $index) {
+      @if (segment.speaker !== 'SYSTEM') {
+        <div class="bubble-row" [class.agent]="segment.speaker === 'AGENT'" [class.customer]="segment.speaker === 'CUSTOMER'">
+          <span class="bubble-label">{{ segment.speaker === 'AGENT' ? 'Agent' : 'Customer' }}</span>
+          <div class="bubble">{{ segment.text }}</div>
+        </div>
+      }
+    }
+  </div>
+}

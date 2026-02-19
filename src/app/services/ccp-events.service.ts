@@ -2,30 +2,43 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+export interface TranscriptSegment {
+  speaker: 'AGENT' | 'CUSTOMER' | 'SYSTEM';
+  text: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class CcpEventsService {
   private callConnectedSubject = new BehaviorSubject<{ channel: string; value: string } | null>(null);
   private passCustomAttributesSubject = new BehaviorSubject<any | null>(null);
-  public incomingChannel : string = '';
+  private transcriptsSubject = new BehaviorSubject<TranscriptSegment[]>([]);
 
-  // Observable stream for components to subscribe to
+  public incomingChannel: string = '';
+
+  // Observable streams
   callConnected$ = this.callConnectedSubject.asObservable();
   passCustomAttributes$ = this.passCustomAttributesSubject.asObservable();
+  transcripts$ = this.transcriptsSubject.asObservable();
 
-  // Method to notify when call is connected with email
   notifyCallConnected(channel: string, value: string) {
     this.callConnectedSubject.next({ channel, value });
   }
 
   passCustomAttributes(attributes: any) {
-    // Logic to pass custom attributes
     this.passCustomAttributesSubject.next(attributes);
   }
 
-  // Method to reset/clear the call state
   notifyCallReset() {
     this.callConnectedSubject.next(null);
+  }
+
+  addTranscript(segment: TranscriptSegment) {
+    this.transcriptsSubject.next([...this.transcriptsSubject.value, segment]);
+  }
+
+  clearTranscripts() {
+    this.transcriptsSubject.next([]);
   }
 }
