@@ -75,7 +75,10 @@ export class CcpPanel implements AfterViewInit, OnDestroy {
       });
 
       contact.onDestroy(() => {
-        this.ngZone.run(() => this.ccpEvents.notifyCallReset());
+        this.ngZone.run(() => {
+          this.ccpEvents.notifyCallReset();
+          this.ccpEvents.clearTranscripts();
+        });
       });
     });
   }
